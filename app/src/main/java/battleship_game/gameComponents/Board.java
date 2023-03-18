@@ -7,16 +7,23 @@ import battleship_game.observ.ShipObserver;
 
 public class Board implements ShipObserver {
     
-    Cell[][] grid = new Cell[10][10];
-    ArrayList<Ship> ships = new ArrayList<>();
+    private Cell[][] grid = new Cell[10][10];
+    private ArrayList<Ship> ships = new ArrayList<>();
 
     public Board(){
         
+        for(int i=0; i<grid.length; i++){
+            for(int j=0; j<grid.length; j++){
+                grid[i][j] = new Cell(i, j);
+            }
+        }
     }
+
 
     public void shotAt(int x, int y){
         grid[x][y].isHit();
     }
+
 
     public boolean checkPlacement(int[][] coordinates){
 
@@ -50,16 +57,28 @@ public class Board implements ShipObserver {
         }
 
         Ship ship = new Ship(cells);
+        ship.addObserver(this);
         ships.add(ship);
     }
+
 
     @Override
     public void update(ObservableShip ship) {
         
         ships.remove(ship);
-        ship.removeObserver(this);
+
         if(ships.size() == 0){
             //GAMEOVER
         }
+    }
+
+
+    public ArrayList<Ship> getShips(){
+        return ships;
+    }
+
+
+    public Cell[][] getGrid(){
+        return grid;
     }
 }

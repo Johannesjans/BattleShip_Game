@@ -17,17 +17,19 @@ public class Ship extends ObservableShip implements CellObserver{
             cell.setStatus(CellStatus.ALIVE);
             cell.addObserver(this);
         }
+    }
 
+    public ArrayList<Cell> getCells(){
+        return cells;
     }
 
     @Override
-    public void update(ObservableCell cell, CellStatus status) {
-        cell.removeObserver(this);
+    public void update(ObservableCell cell) {
+
         cells.remove(cell);
 
         if(cells.size() == 0){
-
+            notifySunk();
         }
     }
-
 }
