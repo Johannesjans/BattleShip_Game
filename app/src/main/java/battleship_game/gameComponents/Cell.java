@@ -19,14 +19,17 @@ public class Cell extends ObservableCell{
         this.status = status;
     }
 
+    
     public CellStatus getStatus(){
         return status;
     }
+
 
     public int getX(){
         return x;
     }
     
+
     public int getY(){
         return y;
     }

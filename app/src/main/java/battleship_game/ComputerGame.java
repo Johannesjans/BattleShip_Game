@@ -4,7 +4,6 @@ import battleship_game.gameComponents.Board;
 import battleship_game.gameComponents.CellStatus;
 import battleship_game.gameComponents.Computer;
 import battleship_game.observ.BoardObserver;
-import battleship_game.observ.ObservableBoard;
 import battleship_game.uiComponents.BoardView;
 import battleship_game.uiComponents.SetupBoardView;
 import javafx.geometry.Insets;
@@ -24,6 +23,7 @@ public class ComputerGame extends Scene implements BoardObserver{
     SetupBoardView playerBoardView;
     Computer computer;
     App app;
+
 
     public ComputerGame(App app, Board playerBoard, Board computerBoard, SetupBoardView playerBoardView){
 

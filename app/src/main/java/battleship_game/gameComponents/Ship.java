@@ -10,6 +10,7 @@ public class Ship extends ObservableShip implements CellObserver{
     
     private ArrayList<Cell> cells = new ArrayList<>();
 
+    
     public Ship(ArrayList<Cell> cells) {
         this.cells = cells;
 
@@ -19,9 +20,11 @@ public class Ship extends ObservableShip implements CellObserver{
         }
     }
 
+
     public ArrayList<Cell> getCells(){
         return cells;
     }
+
 
     @Override
     public void update(ObservableCell cell) {

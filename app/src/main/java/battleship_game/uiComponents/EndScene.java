@@ -12,6 +12,7 @@ public class EndScene extends Scene{
 
     VBox layout = new VBox();
 
+    
     public EndScene(App app, String player) {
 
         super(new VBox(20), 650, 500);

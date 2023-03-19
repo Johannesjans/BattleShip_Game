@@ -1,6 +1,5 @@
 package battleship_game.gameComponents;
 
-import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class ComputerBoard extends Board{
@@ -11,6 +10,7 @@ public class ComputerBoard extends Board{
         addShips();
     }
 
+    
     public void addShips(){
 
         int randX;

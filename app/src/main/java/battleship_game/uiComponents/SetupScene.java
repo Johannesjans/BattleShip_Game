@@ -9,7 +9,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.control.Button;
 
 
 public class SetupScene extends Scene{
@@ -90,10 +89,12 @@ public class SetupScene extends Scene{
         layout.getChildren().addAll(title, boardAndPieces, buttons);
     }
 
+
     public void setSelectedShip(int size){
         selectedShip = size;
     }
 
+    
     public void setHorizontal (boolean horizontal){
         this.horizontal = horizontal;
     }

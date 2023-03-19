@@ -19,6 +19,7 @@ public class BoardView extends GridPane{
     int columns;
     EventHandler<MouseEvent> cellClickHandler;
 
+    
     public BoardView(TwoPlayerGame game, Board board){
             
         rows = board.getGrid().length;

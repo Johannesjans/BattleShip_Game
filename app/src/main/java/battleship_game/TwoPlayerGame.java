@@ -3,13 +3,13 @@ package battleship_game;
 import battleship_game.gameComponents.Board;
 import battleship_game.gameComponents.CellStatus;
 import battleship_game.observ.BoardObserver;
-import battleship_game.observ.ObservableBoard;
 import battleship_game.uiComponents.BoardView;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+
 
 public class TwoPlayerGame extends Scene implements BoardObserver{
     
@@ -22,6 +22,7 @@ public class TwoPlayerGame extends Scene implements BoardObserver{
     Board player1board;
     Board player2board;
     App app;
+
 
     public TwoPlayerGame(App app, Board playerOne, Board playerTwo){
 
@@ -95,6 +96,7 @@ public class TwoPlayerGame extends Scene implements BoardObserver{
         }
     }
 
+    
     @Override
     public void update(String player) {
         app.endGame(player);

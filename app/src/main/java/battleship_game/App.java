@@ -31,6 +31,7 @@ public class App extends Application{
         userChoice();
     }
 
+    
     public void userChoice(){
         StartScene startScene = new StartScene(this);
 
@@ -69,7 +70,7 @@ public class App extends Application{
 
         ComputerGame computerGame = new ComputerGame(this, player1Board, computerBoard, boardView);
         primaryStage.setScene(computerGame);
-        }
+    }
 
 
     public void endGame(String player){
@@ -77,13 +78,16 @@ public class App extends Application{
         primaryStage.setScene(endScene);
     }
 
+
     public void setPlayer1Board(Board board){
         player1Board = board;
     }
 
+
     public void setPlayer2Board(Board board){
         player2Board = board;
     }
+
 
     public void setBoardView(SetupBoardView boardView){
         this.boardView = boardView;

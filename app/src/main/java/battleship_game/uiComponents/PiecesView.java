@@ -16,6 +16,7 @@ public class PiecesView extends VBox{
     
     boolean horizontal = true;
 
+
     public PiecesView(SetupScene setupScene){
 
         this.setSpacing(15);
@@ -29,7 +30,6 @@ public class PiecesView extends VBox{
             selectShip(parent);
             setupScene.setSelectedShip(shipSize);
         };
-
 
         for(int i=2; i<6; i++){
 
@@ -49,7 +49,6 @@ public class PiecesView extends VBox{
 
             this.getChildren().add(ship);
         }
-
 
         VBox setCenter = new VBox();
         setCenter.setAlignment(Pos.CENTER);

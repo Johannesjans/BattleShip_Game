@@ -7,6 +7,7 @@ public class Computer {
     private Cell[][] grid = new Cell[10][10];
     private int[] destroyed;
 
+    
     public Computer(){
  
         for(int i=0; i<grid.length; i++){
@@ -89,5 +90,9 @@ public class Computer {
         }
 
         return null;
+    }
+
+    public Cell[][] getGrid(){
+        return grid;
     }
 }

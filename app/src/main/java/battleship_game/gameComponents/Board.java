@@ -13,6 +13,7 @@ public class Board extends ObservableBoard implements ShipObserver {
     protected boolean[] addedShips = new boolean[6];
     private String player;
 
+    
     public Board(String player){
 
         this.player = player;
@@ -97,5 +98,10 @@ public class Board extends ObservableBoard implements ShipObserver {
 
     public Cell[][] getGrid(){
         return grid;
+    }
+
+
+    public boolean[] getAddedShips(){
+        return addedShips;
     }
 }

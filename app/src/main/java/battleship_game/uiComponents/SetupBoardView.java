@@ -5,7 +5,6 @@ import battleship_game.gameComponents.Board;
 import battleship_game.gameComponents.CellStatus;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -16,6 +15,7 @@ public class SetupBoardView extends GridPane{
     int rows;
     int columns;
 
+    
     public SetupBoardView(SetupScene setupScene, Board board){
         
         rows = board.getGrid().length;
@@ -29,7 +29,6 @@ public class SetupBoardView extends GridPane{
             setupScene.placeShip(x, y);
         };
 
-        
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < columns; col++) {
                 Rectangle cell = new Rectangle();
