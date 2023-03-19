@@ -1,4 +1,4 @@
-# BattleShip_Game
+# Battleship Game
 
 ## About
 This game was built using Gradle and utilizes javaFX for the UI. If you have gradle installed on your system you should be able to use the commands "gradle build" and "gradle run". If you don't have gradle installed you should still be able to run the application with the "./gradlew build" and "./gradlew run" commands. However, these two later commands would require you to be located in the root folder of the project.
