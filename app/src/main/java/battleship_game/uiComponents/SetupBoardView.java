@@ -1,24 +1,22 @@
 package battleship_game.uiComponents;
 
 
-import battleship_game.TwoPlayerGame;
 import battleship_game.gameComponents.Board;
-import battleship_game.gameComponents.CellStatus;
 import javafx.event.EventHandler;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-public class BoardView extends GridPane{
+public class SetupBoardView extends GridPane{
     
     int rows;
     int columns;
 
-    public BoardView(TwoPlayerGame game, Board board){
-            
+    public SetupBoardView(SetupScene setupScene, Board board){
+        
         rows = board.getGrid().length;
         columns = board.getGrid().length;
 
@@ -26,7 +24,8 @@ public class BoardView extends GridPane{
             Rectangle cell = (Rectangle) event.getSource();
             int x = GridPane.getColumnIndex(cell);
             int y = GridPane.getRowIndex(cell);
-            game.tryCell(x, y);
+            
+            setupScene.placeShip(x, y);
         };
 
         
@@ -42,27 +41,20 @@ public class BoardView extends GridPane{
                 add(cell, col, row);
             }
         }
-
-        this.setAlignment(Pos.CENTER);
     }
 
-    
-    public void paintCell(CellStatus status, int x, int y){
-        
-        Rectangle cell = new Rectangle();
-        
-        for (Node node : getChildren()) {
-            if (GridPane.getRowIndex(node) == y && GridPane.getColumnIndex(node) == x) {
-                cell = (Rectangle) node;
-                break;
-            }
-        }
 
-        if(status == CellStatus.DESTROYED){
-            cell.setFill(Color.rgb(175, 0, 42));
-        }
-        else{
-            cell.setFill(Color.rgb(0, 51, 102));
+    public void fillCells(int[][] coordinates){
+        for (int[] coordinate : coordinates) {
+            int x = coordinate[0];
+            int y = coordinate[1];
+
+            for (Node node : getChildren()) {
+                if (GridPane.getRowIndex(node) == y && GridPane.getColumnIndex(node) == x) {
+                    ((Rectangle) node).setFill(Color.BLACK);
+                    break;
+                }
+            }
         }
     }
 }

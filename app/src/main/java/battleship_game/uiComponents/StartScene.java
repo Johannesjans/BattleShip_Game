@@ -42,7 +42,7 @@ public class StartScene extends Scene{
 
         });
         twoPlayer.setOnAction(e -> {
-            app.twoPlayerGame();
+            app.player1Setup();
         });
 
         layout.getChildren().addAll(title, vsComputer, twoPlayer);

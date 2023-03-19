@@ -1,6 +1,6 @@
 package battleship_game.gameComponents;
 
-public enum CellStatus {
+public enum CellStatus{
     EMPTY,
     MISSED,
     ALIVE,

@@ -2,7 +2,7 @@ package battleship_game.gameComponents;
 
 import battleship_game.observ.ObservableCell;
 
-public class Cell extends ObservableCell {
+public class Cell extends ObservableCell{
     
     private CellStatus status;
     private int x;
@@ -32,7 +32,8 @@ public class Cell extends ObservableCell {
     }
 
 
-    public void isHit(){
+    public CellStatus isHit(){
+
         if(status == CellStatus.ALIVE){
             status = CellStatus.DESTROYED;
             notifyHit();
@@ -40,5 +41,7 @@ public class Cell extends ObservableCell {
         else if(status == CellStatus.EMPTY){
             status = CellStatus.MISSED;
         }
+        
+        return status;
     }
 }

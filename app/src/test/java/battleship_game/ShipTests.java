@@ -37,7 +37,7 @@ public class ShipTests {
 
 
     @Test void update(){
-        Board board = new Board();
+        Board board = new Board("Player 1,");
         board.addShip(shipCoordinates);
         
         Cell[][] grid = board.getGrid();

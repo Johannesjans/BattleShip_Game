@@ -15,11 +15,14 @@ import javafx.scene.control.Button;
 public class SetupScene extends Scene{
     
     private VBox layout = new VBox();
-    private Board board = new Board();
+    private Board board;
     private int selectedShip;
     private boolean horizontal = true; 
+    private SetupBoardView boardView;
+    private PiecesView piecesView;
+    private HBox boardAndPieces;
 
-    public SetupScene(App app) {
+    public SetupScene(App app, String player) {
 
         super(new VBox(20), 650, 500);
 
@@ -28,15 +31,16 @@ public class SetupScene extends Scene{
         layout.setAlignment(Pos.CENTER);
         layout.setPadding(new Insets(30));
 
-        Label title = new Label("Place your ships");
+        Label title = new Label(player + ", Place your ships");
         title.setStyle("-fx-font-family: 'Georgia'; -fx-font-size: 30pt; -fx-text-fill: white;");
         
-        BoardView boardview = new BoardView(board); 
-        PiecesView piecesview = new PiecesView(this);
+        board = new Board(player);
+        boardView = new SetupBoardView(this, board); 
+        piecesView = new PiecesView(this);
 
-        HBox boardAndPieces = new HBox();
+        boardAndPieces = new HBox();
         boardAndPieces.setSpacing(30);
-        boardAndPieces.getChildren().addAll(boardview, piecesview);
+        boardAndPieces.getChildren().addAll(boardView, piecesView);
 
         HBox buttons = new HBox();
         buttons.setSpacing(35);
@@ -48,6 +52,14 @@ public class SetupScene extends Scene{
         
         resetB.setOnAction(e -> {
 
+            boardAndPieces = (HBox) layout.getChildren().get(1);
+            boardAndPieces.getChildren().remove(boardView);
+            boardAndPieces.getChildren().remove(piecesView);
+
+            board = new Board(player);
+            boardView = new SetupBoardView(this, board);
+            piecesView = new PiecesView(this);
+            boardAndPieces.getChildren().addAll(boardView, piecesView);
         });
 
         Button continueB = new Button("Continue");
@@ -55,7 +67,21 @@ public class SetupScene extends Scene{
         continueB.setStyle("-fx-font-family: 'Georgia'; -fx-font-size: 13pt; -fx-text-fill: rgb(42, 42, 42); -fx-focus-traversable: false;");
         
         continueB.setOnAction(e -> {
+            switch(player){
+                case "Player 1":
+                    app.setPlayer1Board(board);
+                    app.player2Setup();
+                    break;
 
+                case "Player 2":
+                    app.setPlayer2Board(board);
+                    app.startTwoPlayer();
+                    break;
+
+                case "":
+
+                    break;
+            }
         });
 
         buttons.getChildren().addAll(resetB, continueB);
@@ -68,5 +94,35 @@ public class SetupScene extends Scene{
 
     public void setHorizontal (boolean horizontal){
         this.horizontal = horizontal;
+    }
+
+
+    public void placeShip(int x, int y){
+        
+        if(selectedShip>1){
+            int[][] shipCoordinates = new int[selectedShip][2];
+
+            if(horizontal){
+                for(int i=0; i<selectedShip; i++){
+                    shipCoordinates[i][0] = x+i;
+                    shipCoordinates[i][1] = y;
+                }
+            }
+
+            else{
+                for(int i=0; i<selectedShip; i++){
+                    shipCoordinates[i][0] = x;
+                    shipCoordinates[i][1] = y+i;
+                }
+            }
+
+            boolean okPlacement = board.checkPlacement(shipCoordinates);
+
+            if(okPlacement){
+                board.addShip(shipCoordinates);
+                boardView.fillCells(shipCoordinates);
+                selectedShip = 0;
+            }
+        }
     }
 }
