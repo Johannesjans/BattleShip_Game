@@ -12,6 +12,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
+/**
+ * The "Engine" for the game vs a computer
+ */
 public class ComputerGame extends Scene implements BoardObserver{
     
     VBox layout;
@@ -24,7 +27,13 @@ public class ComputerGame extends Scene implements BoardObserver{
     Computer computer;
     App app;
 
-
+    /**
+     * Builds the game
+     * @param app A reference to the app where the game is running
+     * @param playerBoard The player's board
+     * @param computerBoard The computer's board
+     * @param playerBoardView The visualization of the player's board
+     */
     public ComputerGame(App app, Board playerBoard, Board computerBoard, SetupBoardView playerBoardView){
 
         super(new VBox(5), 500, 780);
@@ -51,7 +60,11 @@ public class ComputerGame extends Scene implements BoardObserver{
         layout.getChildren().addAll(title, computBoardView, playerBoardView);
     }
 
-
+    /**
+     * Represents a shot on a specific cell and determines who is to shoot next. 
+     * @param x x coordinate for the cell
+     * @param y y coordinate for the cell
+     */
     public void tryCell(int x, int y){
 
         if(currentTurn == 1){
@@ -80,7 +93,9 @@ public class ComputerGame extends Scene implements BoardObserver{
         }
     }
 
-
+    /**
+     * Lets the computer take its shot
+     */
     public void computerTurn(){
         currentTurn = 2;
         int[] guess = new int[2];
@@ -88,7 +103,10 @@ public class ComputerGame extends Scene implements BoardObserver{
         tryCell(guess[0], guess[1]);
     }
 
-
+    /**
+     * A method to let the game know that someone has lost
+     * @param player the one who lost
+     */
     @Override
     public void update(String player) {
         app.endGame(player);

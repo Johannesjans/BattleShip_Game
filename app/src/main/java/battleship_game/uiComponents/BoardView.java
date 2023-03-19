@@ -13,13 +13,20 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+/**
+ * Creates a visual representation of a board
+ */
 public class BoardView extends GridPane{
     
     int rows;
     int columns;
     EventHandler<MouseEvent> cellClickHandler;
 
-    
+    /**
+     * Constructs the view for a TwoPlayerGame
+     * @param game The game where the view is used
+     * @param board The board which is represented
+     */
     public BoardView(TwoPlayerGame game, Board board){
             
         rows = board.getGrid().length;
@@ -36,7 +43,11 @@ public class BoardView extends GridPane{
         this.setAlignment(Pos.CENTER);
     }
 
-
+    /**
+     * Constructs the view for a ComputerGame
+     * @param game The game where the view is used
+     * @param board The board which is represented
+     */
     public BoardView(ComputerGame game, Board board){
 
         rows = board.getGrid().length;
@@ -53,7 +64,9 @@ public class BoardView extends GridPane{
         this.setAlignment(Pos.CENTER);
     }
 
-    
+    /**
+     * Paints the board 
+     */
     public void paintBoard(){
 
         for (int row = 0; row < rows; row++) {
@@ -71,7 +84,12 @@ public class BoardView extends GridPane{
 
     }
 
-    
+    /**
+     * Paints a specific rectangle
+     * @param status Determines what color to paint
+     * @param x The x coordinate
+     * @param y The y coordinate
+     */
     public void paintCell(CellStatus status, int x, int y){
         
         Rectangle cell = new Rectangle();

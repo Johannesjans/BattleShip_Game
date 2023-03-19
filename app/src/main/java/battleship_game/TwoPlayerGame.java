@@ -10,7 +10,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
-
+/**
+ * The "Engine" for the two-player game
+ */
 public class TwoPlayerGame extends Scene implements BoardObserver{
     
     VBox layout;
@@ -23,7 +25,12 @@ public class TwoPlayerGame extends Scene implements BoardObserver{
     Board player2board;
     App app;
 
-
+    /**
+     * Builds the game
+     * @param app A reference to the app where the game is running
+     * @param playerOne The board of player 1
+     * @param playerTwo The board of player 2
+     */
     public TwoPlayerGame(App app, Board playerOne, Board playerTwo){
 
         super(new VBox(5), 650, 500);
@@ -60,7 +67,11 @@ public class TwoPlayerGame extends Scene implements BoardObserver{
         layout.getChildren().add(player1view);
     }
 
-
+    /**
+     * Simulates a shot on a cell. Also detirmines if the current player gets to shoot again or not
+     * @param x The x coordinate of the shot
+     * @param y THe y coordinate of the shot
+     */
     public void tryCell(int x, int y){
         CellStatus originalState;
         CellStatus result;
@@ -82,6 +93,9 @@ public class TwoPlayerGame extends Scene implements BoardObserver{
     }
 
     
+    /**
+     * Makes nessecary changes to let next player make its shot
+     */
     public void nextPlayer(){
         
         layout.getChildren().remove(0);
@@ -96,7 +110,10 @@ public class TwoPlayerGame extends Scene implements BoardObserver{
         }
     }
 
-    
+    /**
+     * A method to let the game know that a player has lost
+     * @param player The player who lost
+     */
     @Override
     public void update(String player) {
         app.endGame(player);

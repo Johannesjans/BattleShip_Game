@@ -8,11 +8,18 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
+/**
+ * The scene that shows the winner
+ */
 public class EndScene extends Scene{
 
     VBox layout = new VBox();
 
-    
+    /**
+     * Builds the scene
+     * @param app A reference back to the app
+     * @param player The player who lost
+     */
     public EndScene(App app, String player) {
 
         super(new VBox(20), 650, 500);

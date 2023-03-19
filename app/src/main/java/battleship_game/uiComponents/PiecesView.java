@@ -12,11 +12,17 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+/**
+ * A representation of the different ships that can be placed. Used together with SetupBoardView in SetupScene
+ */
 public class PiecesView extends VBox{
     
     boolean horizontal = true;
 
-
+    /**
+     * builds the visuals and functionallity
+     * @param setupScene The scene where the view is to be used
+     */
     public PiecesView(SetupScene setupScene){
 
         this.setSpacing(15);
@@ -81,6 +87,10 @@ public class PiecesView extends VBox{
     }
 
 
+    /**
+     * Visualizes that a ship is selected
+     * @param ship The selected ship
+     */
     public void selectShip(GridPane ship){
 
         for(Node node : ship.getChildren()){

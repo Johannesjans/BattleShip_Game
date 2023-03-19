@@ -2,15 +2,24 @@ package battleship_game.gameComponents;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * An extension of the board cladd that places the computer's ships
+ */
 public class ComputerBoard extends Board{
     
+    /**
+     * Builds the board
+     * @param player The player to whom the board belongs
+     */
     public ComputerBoard(String player){
 
         super(player);
         addShips();
     }
 
-    
+    /**
+     * Adds the different sized ships to the board
+     */
     public void addShips(){
 
         int randX;

@@ -2,12 +2,17 @@ package battleship_game.gameComponents;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * The AI that plays agains the player
+ */
 public class Computer {
     
     private Cell[][] grid = new Cell[10][10];
     private int[] destroyed;
 
-    
+    /**
+     * Creates a grid that is used by the computer to make "smart" moves
+     */
     public Computer(){
  
         for(int i=0; i<grid.length; i++){
@@ -18,12 +23,20 @@ public class Computer {
 
     }
 
-
+    /**
+     * Lets the computer know it missed its last shot
+     * @param x x coordinate of the shot
+     * @param y y coordinate of the shot
+     */
     public void miss(int x, int y){
         grid[x][y].setStatus(CellStatus.MISSED);
     }
 
-
+    /**
+     * Lets the computer know it missed its last show
+     * @param x x coordinate of the shot
+     * @param y y coordinate of the shot
+     */
     public void hit(int x, int y){
         destroyed = new int[2];
         destroyed[0] = x;
@@ -31,7 +44,10 @@ public class Computer {
         grid[x][y].setStatus(CellStatus.DESTROYED);
     }
 
-
+    /**
+     * Decides what coordinates to guess next. tries adjacent if there was a recent hit and random otherwise
+     * @return The coordinates of the new guess
+     */
     public int[] newGuess(){
         int[] guess = new int[2];
         
@@ -56,7 +72,11 @@ public class Computer {
         return guess;
     }
 
-
+    /**
+     * Checks if Cells adjacent to the last hit are viable guesses
+     * @param destroyed Coordinates of the last hit
+     * @return Coordinates of an adjacent cell. Null if no adjacent cells are qualified
+     */
     public int[] getAdjacent(int[] destroyed){
         int[] adjacent = new int[2];
 
@@ -92,6 +112,10 @@ public class Computer {
         return null;
     }
 
+    /**
+     * Get the grid
+     * @return The grid
+     */
     public Cell[][] getGrid(){
         return grid;
     }

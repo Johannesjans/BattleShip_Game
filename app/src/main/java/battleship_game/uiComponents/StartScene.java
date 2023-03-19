@@ -7,11 +7,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
-
+/**
+ * The first Scene of the game
+ */
 public class StartScene extends Scene{
     VBox layout = new VBox();
  
-
+    /**
+     * Builds the visuals and sets the button functionallity
+     * @param app A reference to the app where the app is running
+     */
     public StartScene(App app) {
 
         super(new VBox(20), 600, 450);

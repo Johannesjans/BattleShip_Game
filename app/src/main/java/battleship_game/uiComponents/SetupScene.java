@@ -10,7 +10,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-
+/**
+ * The scene where a player is able to place its ships on the board
+ */
 public class SetupScene extends Scene{
     
     private VBox layout = new VBox();
@@ -21,6 +23,11 @@ public class SetupScene extends Scene{
     private PiecesView piecesView;
     private HBox boardAndPieces;
 
+    /**
+     * Builds the visuals and sets the functionallity of the buttons
+     * @param app A reference to the app where the game is running
+     * @param player The player who is setting up its board
+     */
     public SetupScene(App app, String player) {
 
         super(new VBox(20), 650, 500);
@@ -89,17 +96,27 @@ public class SetupScene extends Scene{
         layout.getChildren().addAll(title, boardAndPieces, buttons);
     }
 
-
+    /**
+     * Sets the size of the selected ship
+     * @param size The size of the ship
+     */
     public void setSelectedShip(int size){
         selectedShip = size;
     }
 
-    
+    /**
+     * Sets the orientation of the ship to place
+     * @param horizontal True if horizontal and false if vertical
+     */
     public void setHorizontal (boolean horizontal){
         this.horizontal = horizontal;
     }
 
-
+    /**
+     * Tries to place the ship and places it if the coordinates are available
+     * @param x x coordinate of the left-most cell
+     * @param y y coordinate of the top-most cell
+     */
     public void placeShip(int x, int y){
         
         if(selectedShip>1){
