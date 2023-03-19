@@ -31,7 +31,7 @@ public class SetupScene extends Scene{
         layout.setAlignment(Pos.CENTER);
         layout.setPadding(new Insets(30));
 
-        Label title = new Label(player + ", Place your ships");
+        Label title = new Label(player + " Place your ships");
         title.setStyle("-fx-font-family: 'Georgia'; -fx-font-size: 30pt; -fx-text-fill: white;");
         
         board = new Board(player);
@@ -79,7 +79,9 @@ public class SetupScene extends Scene{
                     break;
 
                 case "":
-
+                    app.setPlayer1Board(board);
+                    app.setBoardView(boardView);
+                    app.startComputerGame();
                     break;
             }
         });

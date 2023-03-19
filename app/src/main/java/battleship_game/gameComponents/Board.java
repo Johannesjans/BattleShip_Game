@@ -8,9 +8,9 @@ import battleship_game.observ.ShipObserver;
 
 public class Board extends ObservableBoard implements ShipObserver {
     
-    private Cell[][] grid = new Cell[10][10];
-    private ArrayList<Ship> ships = new ArrayList<>();
-    private boolean[] addedShips = new boolean[6];
+    protected Cell[][] grid = new Cell[10][10];
+    protected ArrayList<Ship> ships = new ArrayList<>();
+    protected boolean[] addedShips = new boolean[6];
     private String player;
 
     public Board(String player){

@@ -31,6 +31,9 @@ public class EndScene extends Scene{
         if(player.equals("Player 1")){
             subTitle.setText("Player 2");
         }
+        else if(player.equals("")){
+            subTitle.setText("Computer");
+        }
 
         Button playAgain = new Button("Play Again");
         playAgain.setPrefWidth(170);

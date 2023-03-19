@@ -17,7 +17,7 @@ public class ObservableBoard {
 
     public void notifyLost(String player){
         for(BoardObserver observer : observers){
-            observer.update(this, player);
+            observer.update(player);
         }
     }
 }

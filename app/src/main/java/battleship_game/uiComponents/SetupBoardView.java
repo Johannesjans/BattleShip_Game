@@ -2,6 +2,7 @@ package battleship_game.uiComponents;
 
 
 import battleship_game.gameComponents.Board;
+import battleship_game.gameComponents.CellStatus;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -55,6 +56,26 @@ public class SetupBoardView extends GridPane{
                     break;
                 }
             }
+        }
+    }
+
+    
+    public void paintCell(CellStatus status, int x, int y){
+        
+        Rectangle cell = new Rectangle();
+        
+        for (Node node : getChildren()) {
+            if (GridPane.getRowIndex(node) == y && GridPane.getColumnIndex(node) == x) {
+                cell = (Rectangle) node;
+                break;
+            }
+        }
+
+        if(status == CellStatus.DESTROYED){
+            cell.setFill(Color.rgb(175, 0, 42));
+        }
+        else{
+            cell.setFill(Color.rgb(0, 51, 102));
         }
     }
 }

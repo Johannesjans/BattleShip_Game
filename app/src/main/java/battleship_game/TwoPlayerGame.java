@@ -95,9 +95,8 @@ public class TwoPlayerGame extends Scene implements BoardObserver{
         }
     }
 
-
     @Override
-    public void update(ObservableBoard object, String player) {
+    public void update(String player) {
         app.endGame(player);
     }
 }

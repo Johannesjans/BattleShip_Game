@@ -39,7 +39,7 @@ public class StartScene extends Scene{
         
         
         vsComputer.setOnAction(e -> {
-
+            app.setupComputerGame();
         });
         twoPlayer.setOnAction(e -> {
             app.player1Setup();
